@@ -2,11 +2,6 @@
 
 Repository untuk menyediakan project Arduino siap pakai dan dokumentasi singkat.
 
-[![WhatsApp](https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg)](https://wa.me/)
-[![TikTok](https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.png)](https://www.tiktok.com/)
-[![YouTube](https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg)](https://www.youtube.com/)
----
-
 ## Featured projects
 A few highlights — show impact, not just code. For each project include a one-line outcome and link to the repo or demo.
 
