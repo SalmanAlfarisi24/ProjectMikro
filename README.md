@@ -1,58 +1,35 @@
-# Arduino Ready-to-Use Projects
-
-Repository untuk menyediakan project Arduino siap pakai dan dokumentasi singkat.
-
-## Featured projects
-A few highlights — show impact, not just code. For each project include a one-line outcome and link to the repo or demo.
-
-- [Project One — Short name](https://github.com/SalmanAlfarisi24/project-one)  
-  Built a [feature/outcome] that resulted in [metric or benefit]. Tech: React, Node.js, PostgreSQL.
-- [Project Two — Short name](https://github.com/SalmanAlfarisi24/project-two)  
-  Solved [user problem] with [approach]. Tech: Python, FastAPI, Docker.
-- [Open Source Contributor](https://github.com/SalmanAlfarisi24)  
-  Regular contributions to [repos/areas you contribute to] — bug fixes, docs, and CI improvements.
-
-Pro tip: include 1–2 screenshots or a short demo GIF for the most important project(s).
-
----
-
-## How I work
-Short, practical bullets that tell collaborators what to expect.
-
-- Goal-oriented: I focus on shipping measurable outcomes.
-- Small, iterative steps: prefer incremental delivery and fast feedback.
-- Clear communication: PRs with context, issues with acceptance criteria.
-- Testing-first mindset: automated tests and CI for stable releases.
-
----
-
-## What I’m proud of
-- Shipped X feature that increased [metric] by Y%  
-- Built a reusable component/system used across N apps  
-- Improved CI time by X% and reduced flaky tests by Y%
-
-(Replace with 2–4 real, quantified highlights.)
-
----
-
-## Get in touch
-- GitHub: [SalmanAlfarisi24](https://github.com/SalmanAlfarisi24)  
-- Email: your.email@example.com (replace)  
-- LinkedIn: [Your Name](https://www.linkedin.com/in/your-link) (replace)  
-- Twitter: [@yourhandle](https://twitter.com/yourhandle) (optional)
-
-Prefer your preferred contact method and working hours/timezone.
-
----
-
-## If you want to collaborate
-- Open a GitHub issue or send a short email describing the idea or problem.  
-- Include goals, constraints, and a target timeline.  
-- I love mentoring and pairing on architecture or debugging sessions.
-
----
-
-## Want this README personalized?
-I can refine this README to match your exact voice, role, and projects. Tell me the details below and I’ll produce a polished, final version ready to paste into your GitHub profile.
-
----
+Seluruh komponen proyek Palang Pintu Parkir menggunakan Arduino Uno, Sensor Ultrasonik, Servo, Buzzer, LED, dan Relay 1 Channel.
+Berikut adalah urutan pemasangan kabelnya secara lengkap:
+1. Jalur Daya Utama (Breadboard)
+ * Tarik kabel dari pin 5V Arduino ke jalur merah (+) di samping breadboard.
+ * Tarik kabel dari pin GND Arduino ke jalur biru (-) di samping breadboard.
+   (Semua komponen akan mengambil daya (+) dan (-) dari jalur ini).
+2. Sensor Ultrasonik (HC-SR04)
+ * Pin VCC sensor ke jalur merah (+) breadboard.
+ * Pin Trig sensor ke Pin 7 Arduino.
+ * Pin Echo sensor ke Pin 6 Arduino.
+ * Pin GND sensor ke jalur biru (-) breadboard.
+3. Motor Servo (SG90)
+ * Kabel Oranye (Sinyal) ke Pin 9 Arduino.
+ * Kabel Merah (VCC) ke jalur merah (+) breadboard.
+ * Kabel Cokelat/Hitam (GND) ke jalur biru (-) breadboard.
+4. Relay 1 Channel (Mengatur LED Merah)
+Sisi Input (Ke Arduino):
+ * Pin VCC Relay ke jalur merah (+) breadboard.
+ * Pin GND Relay ke jalur biru (-) breadboard.
+ * Pin IN (Sinyal) Relay ke Pin 5 Arduino.
+Sisi Output (Saklar LED Merah):
+ * Hubungkan kabel jumper dari jalur merah (+) breadboard ke terminal COM (tengah) pada blok terminal biru Relay.
+ * Hubungkan terminal NO (Normally Open) pada Relay ke kaki panjang (Anoda) LED Merah. (Gunakan resistor 220 ohm di antara terminal NO dan LED agar LED tidak putus).
+ * Hubungkan kaki pendek (Katoda) LED Merah ke jalur biru (-) breadboard.
+5. LED Hijau & Kuning (Indikator Tambahan)
+ * LED Hijau: Kaki panjang ke Pin 3 Arduino (melalui resistor 220 ohm), kaki pendek ke jalur biru (-) breadboard.
+ * LED Kuning: Kaki panjang ke Pin 4 Arduino (melalui resistor 220 ohm), kaki pendek ke jalur biru (-) breadboard.
+6. Buzzer (Alarm)
+ * Kaki Positif (+) Buzzer ke Pin 11 Arduino.
+ * Kaki Negatif (-) Buzzer ke jalur biru (-) breadboard.
+Cara Kerja Rangkaian Ini:
+ * Kondisi Standby: Palang (Servo) tertutup (0 derajat). Relay aktif sehingga LED Merah menyala (Tanda Berhenti).
+ * Mobil Terdeteksi: Saat sensor Ultrasonik membaca jarak < 15cm, Buzzer berbunyi singkat, Servo bergerak membuka (90 derajat), Relay memutus arus sehingga LED Merah mati, dan LED Hijau menyala (Tanda Silakan Masuk).
+ * Mobil Lewat: Setelah jeda waktu tertentu, palang kembali menutup, LED Hijau mati, dan Relay kembali menyalakan LED Merah.
+Pastikan semua sambungan kabel kencang dan tidak ada kabel terbuka yang saling bersentuhan (korsleting).
